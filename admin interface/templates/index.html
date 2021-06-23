@@ -1,0 +1,81 @@
+{%extends "base.html"%}
+{%block title%}Analtics{%endblock%}
+
+{%block content%}
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'parties');
+            data.addColumn('number', "votes");
+            let bjp = document.getElementById("bjp")
+            let cong = document.getElementById("cong")
+            let harish = document.getElementById("harish")
+            data.addRows([
+                ['BJP', parseInt(`{{bjp.votes}}`)],
+                ['CONG', parseInt(`{{cong.votes}}`)],
+                ['HARISH', parseInt(`{{harish.votes}}`)],
+            ]);
+
+            var options = {'title':'Pie Analtics',
+                            'width':400,
+                            'height':300};
+
+            var chart = new google.visualization.PieChart(document.getElementById('pie'));
+            chart.draw(data, options);
+        }
+    </script>
+    <script>
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChartBar);
+
+        function drawChartBar() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'parties');
+            data.addColumn('number', "votes");
+            let bjp = document.getElementById("bjp")
+            let cong = document.getElementById("cong")
+            let harish = document.getElementById("harish")
+            data.addRows([
+                ['BJP', parseInt(`{{bjp.votes}}`)],
+                ['CONG', parseInt(`{{cong.votes}}`)],
+                ['HARISH', parseInt(`{{harish.votes}}`)],
+            ]);
+
+            var options = {'title':'Bar Analtics',
+                            'width':600,
+                            'height':500};
+
+            var chart = new google.visualization.BarChart(document.getElementById('bar'));
+            chart.draw(data, options);
+        }
+    </script>
+
+    <script>
+        var total = parseInt(`{{bjp.votes}}`) + parseInt(`{{cong.votes}}`) + parseInt(`{{harish.votes}}`)
+        var totalvotes = document.getElementById("totalvotes")
+        totalvotes.innerHTML = `Total Votes Polled : ${total}`
+    </script>
+
+    <div class="container-fluid">
+        <br>
+        <h1 id="totalvotes">Total Votes Polled: {{total}}</h1>
+        <hr>
+        <h1>BJP : {{bjp.votes}}</h1>
+        <h1>CONG: {{cong.votes}}</h1>
+        <h1>HARISH: {{harish.votes}}</h1><br>
+
+        <hr>
+
+        <h1>Pie Analisis</h1>
+        <div id="pie"></div><br>
+
+        <hr>
+        <h1>Bar Analisis</h1>
+        <div id="bar"></div>
+    </div>
+{%endblock%}

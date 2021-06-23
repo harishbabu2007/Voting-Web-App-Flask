@@ -1,0 +1,37 @@
+{%extends "base.html"%}
+{%block title%}Voting Website{%endblock%}
+
+{%block content%}
+    <style>
+        .position {
+            width: 450px;
+            margin: auto;
+            margin-top: 100px;
+        }
+    </style>
+    <div class="card position">
+        <h5 class="card-header info-color white-text text-center py-4">
+        <strong>Start Voting</strong>
+        </h5>
+    
+        <div class="card-body px-lg-5 pt-0">
+            <form class="text-center" style="color: #757575;" action="#" method="POST">
+                {%with messages = get_flashed_messages()%}
+                    {%if messages%}
+                        {%for msg in messages%}
+                            <p style="color:red;">{{msg}}</p>
+                        {%endfor%}
+                    {%endif%}
+                {%endwith%}
+
+                <div class="md-form">
+                    <input type="number" name="voter_id" id="materialLoginFormEmail" class="form-control">
+                    <label for="materialLoginFormEmail">Voter Id</label>
+                </div>
+        
+                <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">Start Voting</button>
+        
+            </form>
+        </div>
+    </div>
+{%endblock%}

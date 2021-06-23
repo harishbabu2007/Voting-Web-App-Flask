@@ -1,0 +1,40 @@
+{%extends "base.html"%}
+{%block title%}Vote{%endblock%}
+
+{%block content%}
+    <style>
+        .position {
+            width: 450px;
+            margin: auto;
+            margin-top: 70px;
+        }
+    </style>
+    <div class="jumbotron position">
+        <form action="#" method="POST">
+            <div class="text-center">
+                <h3>Please Vote for a partie</h3>
+            </div>
+
+            <hr class="my-4">
+
+            <div class="form-check">
+                <label class="form-check-label" for="materialUnchecked"><h4>BJP</h4></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="radio" class="form-check-input" id="materialUnchecked" name="vote" value="bjp">
+            </div><br>
+            
+            <div class="form-check">
+                <label class="form-check-label" for="materialUnchecked"><h4>CONG</h4></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="radio" class="form-check-input" id="materialUnchecked" name="vote" value="cong">
+            </div><br>
+
+            <div class="form-check">
+                <label class="form-check-label" for="materialUnchecked"><h4>HARISH</h4></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="radio" class="form-check-input" id="materialUnchecked" name="vote" value="harish">
+            </div>
+
+            <hr class="my-4">
+            <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+        </form>
+    </div>
+    
+{%endblock%}
